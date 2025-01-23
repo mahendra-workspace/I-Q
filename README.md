@@ -91,4 +91,24 @@
          - Eager Initialization: By default, it instantiates all singleton beans during startup for better performance in the long run.         
          - Internationalization: Supports i18n (messages and resources in different languages). 
          - Annotation Processing: Fully supports annotations like @Autowired, @Component, @Value, etc.        
-       
+
+ 10. **ClassLoader and Its types**
+     - In Java, a ClassLoader is a part of the Java Runtime Environment (JRE) responsible for dynamically loading Java classes into the Java Virtual Machine (JVM). ClassLoaders handle the task of locating, loading, and linking class files (.class) during runtime. Without class loaders, the JVM cannot execute Java applications.
+     - **Responsibity**
+       - Locating and reading the bytecode of a class (from files or other sources) and converting it into a Class object.
+       - Allocates memory for class variables and initializes them to default values.
+       - Executes the static initializers and static blocks in the class.
+     - **Bootstrap ClassLoader:**
+       - Parent of all ClassLoaders.
+       - It is written in native code and part of the JVM itself.
+       - Loads the core Java classes (e.g., classes from java.lang and java.util packages).
+     - **Extension ClassLoader (Platform ClassLoader from Java 9)**
+       - Loads classes from the Java extensions directory ($JAVA_HOME/lib/ext).
+       - It is implemented in Java and delegates to the Bootstrap ClassLoader.  
+     - ** System ClassLoader (Application ClassLoader)**
+       - Loads classes from the application's classpath (e.g., the CLASSPATH environment variable or JAR files specified at runtime).
+       - Delegates to the Extension ClassLoader.
+       - This is the default class loader for most user-defined classes.
+     - **Custom ClassLoaders**
+       - Developers can define their own class loaders by extending the ```ClassLoader```
+       - Useful for Dynamically loading classes from non-standard sources (e.g., network, database).
