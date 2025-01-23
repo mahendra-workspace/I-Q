@@ -50,6 +50,8 @@
    - **First-Level Cache**
      - The first-level cache is associated with the Hibernate ```Session``` object. It is enabled by default and cannot be disabled.
      - It is specific to a particular session, meaning cached data is valid only within the lifecycle of that session.
-     - ```Session session = sessionFactory.openSession();
-Transaction transaction = session.beginTransaction();```
+     - ```
+       Session session = sessionFactory.openSession();
+       Transaction transaction = session.beginTransaction();
+       ```
        
