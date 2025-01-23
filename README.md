@@ -73,6 +73,11 @@
         public class Author {
         }
         ```
+   - **Common Caching Providers**
+     - EhCache: Popular and widely used caching provider for Hibernate.
+     - Caffeine: A high-performance caching library.
+     - Infinispan: Advanced distributed caching solution.
+     - Redis: In-memory data structure store, commonly used for distributed caching.   
 
        
        
