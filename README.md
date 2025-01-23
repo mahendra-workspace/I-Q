@@ -51,7 +51,28 @@
      - The first-level cache is associated with the Hibernate ```Session``` object. It is enabled by default and cannot be disabled.
      - It is specific to a particular session, meaning cached data is valid only within the lifecycle of that session.
      - ```
+       
        Session session = sessionFactory.openSession();
        Transaction transaction = session.beginTransaction();
+       Author author1 = session.get(Author.class, 1L);
+       
        ```
+   - **Second-Level Cache**
+     - The second-level cache is associated with the Hibernate ```SessionFactory```. It allows entities, collections, or queries to be cached across sessions.
+     - It is shared across multiple sessions and can store data beyond the lifecycle of a single session.
+     - When enabled, Hibernate checks the second-level cache for the required data before querying the database. If the data is present in the cache, it is retrieved directly.
+     - For enabling it we need to add Maven Dependency (e.g., EhCache or Caffeine) and need configuration in properties file and also need to write ```@cache(usage = CacheConcurrencyStrategy.READ_WRITE)``` in entity.
+     - ```
+       hibernate.cache.use_second_level_cache=true
+       hibernate.cache.region.factory_class=org.hibernate.cache.ehcache.EhCacheRegionFactory
+       hibernate.cache.use_query_cache=true
+       ```
+      - ```
+        @Entity
+        @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+        public class Author {
+        }
+        ```
+
+       
        
