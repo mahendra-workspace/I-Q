@@ -31,4 +31,27 @@
    - Use Case of Interceptor are validating user input, handling cross-cutting concerns like logging, session tracking, or security at the Spring MVC level.
    - Interceptors can be created by implementing the ```HandlerInterceptor``` interface or extending ```HandlerInterceptorAdapter```.
 
+6. **What is Lazy loading And Eager Loading?**
+   - In Lazy loading data is fetched on-demand. Associated data is not loaded until it is explicitly accessed.
+   - Accessing lazy-loaded data after the session is closed can cause LazyInitializationException in frameworks like Hibernate. Can lead to the ```N+1 Select Problem``` if not carefully managed.
+   - In Eager loading data is fetched immediately, along with the main entity. All associated data is loaded in a single query. The related data is fetched using joins or separate queries during the initial load.
+   - For ```@OneToMany``` and ```@ManyToMany``` associations, the default fetch type is LAZY.
+   - For ```@OneToOne``` and ```@ManyToOne``` associations, the default fetch type is EAGER.
     
+7. **What is N+1 select problem?**
+   - The N+1 Select Problem is a common performance issue that occurs in applications (especially when using ORM frameworks like Hibernate or JPA) when data is fetched lazily for a collection or relationship.
+   - The initial query retrieves the primary data (1 query).
+   - For each result of the primary data, lazy loading triggers a separate query to fetch the related data (N queries).
+   - Use fetch joins to avoid it when you know you’ll need related data.
+   - Use lazy loading by default but optimize it with ```@BatchSize``` or ```fetch joins``` as required.
+     
+8. **Explain Hibernet Caching.**
+   - Caching in Hibernate is a mechanism that improves application performance by reducing the number of database interactions. It stores frequently accessed data in memory, allowing Hibernate to reuse the data without hitting the database again.
+   - **First-Level Cache**
+     - The first-level cache is associated with the Hibernate ```Session``` object. It is enabled by default and cannot be disabled.
+     - It is specific to a particular session, meaning cached data is valid only within the lifecycle of that session.
+     - ```
+Session session = sessionFactory.openSession();
+Transaction transaction = session.beginTransaction();
+
+       ```
