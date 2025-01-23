@@ -105,7 +105,7 @@
      - **Extension ClassLoader (Platform ClassLoader from Java 9)**
        - Loads classes from the Java extensions directory ($JAVA_HOME/lib/ext).
        - It is implemented in Java and delegates to the Bootstrap ClassLoader.  
-     - ** System ClassLoader (Application ClassLoader)**
+     - **System ClassLoader (Application ClassLoader)**
        - Loads classes from the application's classpath (e.g., the CLASSPATH environment variable or JAR files specified at runtime).
        - Delegates to the Extension ClassLoader.
        - This is the default class loader for most user-defined classes.
