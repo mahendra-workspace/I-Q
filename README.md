@@ -79,5 +79,16 @@
      - Infinispan: Advanced distributed caching solution.
      - Redis: In-memory data structure store, commonly used for distributed caching.   
 
-       
+ 9. **BeanFactory and ApplicationContext**
+     - BeanFactory and ApplicationContext are two core interfaces in the Spring framework for managing beans. Both are part of the Spring IoC (Inversion of Control) container
+     - **BeanFactory**
+       - The BeanFactory is the basic and simplest container in Spring. It provides the foundational functionality for managing and instantiating beans.
+       - Lazy Initialization: Beans are created only when they are requested (on-demand).
+       - Provides basic features like instantiating and wiring beans.
+       - Does not provide advanced features such as event publishing, internationalization, or annotation-based configuration.
+       - **ApplicationContext**
+         - The ApplicationContext is a more advanced container that extends the BeanFactory and adds extra features for enterprise-level applications.
+         - Eager Initialization: By default, it instantiates all singleton beans during startup for better performance in the long run.         
+         - Internationalization: Supports i18n (messages and resources in different languages). 
+         - Annotation Processing: Fully supports annotations like @Autowired, @Component, @Value, etc.        
        
