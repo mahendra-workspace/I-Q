@@ -141,3 +141,18 @@
       -  Similar to GET but retrieves only headers (no response body).
     - **OPTIONS**
       - Retrieves available HTTP methods for a resource.
+13. **diffrence between get and load methods**
+    - In Hibernate, the get() and load() methods are used to retrieve an object from the database.
+    - While both are part of the ```Session``` interface.
+    - **```get()``` Method**
+      - Retrieves the object immediately from the database.
+      - Use when you are not sure if the object exists (returns ```null``` if not found).
+      - Always hits the database at the time of method call.
+      - Returns the actual object instance directly.
+      - Works inside and outside a transactional context.
+    - **```load()``` Method**
+      - Returns a proxy object immediately, fetching data only when accessed (lazy loading).
+      - Use when you are sure the object exists (throws an exception if not found).```org.hibernate.ObjectNotFoundException```
+      - Returns a proxy object unless the object is accessed.
+      - Returns a proxy object unless the object is accessed.
+      - Works properly only in a transactional context (to resolve proxies).
