@@ -125,3 +125,19 @@
       - Deployed to a Java web server or container like Apache Tomcat, Jetty, or WildFly.
       - Cannot be executed directly; requires deployment in a server/container.
       - Hierarchical structure with WEB-INF/ folder for classes, web.xml, and other server-side components.
+12. **Idempotent Methods in REST API**
+    - In REST APIs, idempotent methods are HTTP methods where making multiple identical requests has the same effect as making a single request.
+    - These methods ensure that repeating the request does not produce different results or side effects beyond the first execution.
+    - **GET**
+      -  Retrieves data from the server.
+      -  Multiple GET requests do not change the server state or data.
+    - **PUT**
+      - Updates or replaces an existing resource or creates a new one if it doesn't exist.
+      - Repeated PUT requests with the same payload result in the resource being in the same state.
+    - **DELETE**
+      - Repeated DELETE requests on the same resource have the same effect (i.e., the resource is removed).
+      - Once deleted, subsequent DELETE requests should not cause additional side effects.
+    - **HEAD**
+      -  Similar to GET but retrieves only headers (no response body).
+    - **OPTIONS**
+      - Retrieves available HTTP methods for a resource.
