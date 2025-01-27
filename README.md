@@ -112,3 +112,16 @@
      - **Custom ClassLoaders**
        - Developers can define their own class loaders by extending the ```ClassLoader```
        - Useful for Dynamically loading classes from non-standard sources (e.g., network, database).
+11. **Difference b/w JAR and WAR files and how to deploy**
+    - **JAR**
+      - Used to package Java applications (standalone or libraries).
+      - Contains compiled ```.class``` files, resources (e.g., properties), and metadata in ```META-INF/MANIFEST.MF```.
+      - Deployed to systems with a JVM, typically for standalone applications or librarie.
+      - Can be executed directly if it contains a ```main()``` method. Example: ```java -jar MyApp.jar```.
+      - Flat structure with compiled classes and resources in the root directory.
+    - **WAR**
+      - Used to package web applications (Java-based, adhering to the servlet/JSP specification).
+      - Includes all components of a web app: servlets, JSPs, HTML, CSS, JS, and web.xml (in WEB-INF).
+      - Deployed to a Java web server or container like Apache Tomcat, Jetty, or WildFly.
+      - Cannot be executed directly; requires deployment in a server/container.
+      - Hierarchical structure with WEB-INF/ folder for classes, web.xml, and other server-side components.
