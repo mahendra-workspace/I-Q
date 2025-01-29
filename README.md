@@ -156,3 +156,41 @@
       - Returns a proxy object unless the object is accessed.
       - Returns a proxy object unless the object is accessed.
       - Works properly only in a transactional context (to resolve proxies).
+ 14. **What is Spring Boot?**
+     - Spring Boot is an extension of the Spring Framework that simplifies the development of stand-alone, production-grade Spring-based applications.
+     - It provides auto-configuration, embedded servers (like Tomcat), and opinionated defaults to reduce boilerplate code and speed up development.
+     - Ideal for building REST APIs, microservices, and web applications.
+     - **Key Features of Spring Boot**
+       - Auto-Configuration: Automatically configures your application based on the dependencies you add.
+       - Standalone: No need for external servers; it comes with embedded servers like Tomcat, Jetty, or Undertow.
+       - Production-Ready: Includes features like actuator for monitoring and managing your app in production.
+       - Spring Ecosystem Integration: Works seamlessly with other Spring projects like Spring Data, Spring Security, and Spring Cloud.
+     - **Bean Related annotation**
+       - **```@Component```**
+         - It indicates that an annotated class is a spring bean/component. It also tell spring container to automatically create spring bean and Ioc container automatically manage this process.
+         - By default bean name is same as class name but first latter of class name is small latter. we can specify name using ```@Component("beanName")```
+         - Ioc implement annotation based configuraion.(No need for ```New``` keyword)
+           
+       - **```@Autowired```**
+         - The @Autowired annotation in Spring and Spring Boot is used for dependency injection. It allows Spring to automatically inject beans (dependencies) into your class, eliminating the need for manual configuration or instantiation.
+         - It is used in contructor injection, setter injection and field injection.
+         - Spring scans the application context for a matching bean (based on type or name) and injects it into the annotated field, constructor, or method. If no matching bean is found, Spring throws a ```NoSuchBeanDefinitionException```.
+         - Use ```@Autowired(required = false)``` to make the dependency optional. If no matching bean is found, Spring will not throw an exception.
+         - Ioc implement annotation based configuraion.(No need for ```New``` keyword)
+         
+       - **```@Qualifier```**
+         - It is used in conjunction with Autowired to avoid confusion when we have two or more beans configured for same type.
+         - it require bean nama eg. ```@Qualifier("vegPizza")```
+         - Ioc implement annotation based configuraion.(No need for ```New``` keyword)
+           
+       - **```@Primary```**
+         - It is used to give higher preference to a bean when there are multiple beans of the same type.
+         - it is a class level annotation and used with ```@Component``` annotation.
+         - Ioc implement annotation based configuraion.(No need for ```New``` keyword)
+           
+       - **```@Bean```**
+         - It indicates that a method produces a bean to be managed by the spring container.
+         - It usually declared in Configuration class to create a spring bean definations.
+         - By default bean is same as method name . we can specify bean name using @Bean(name="beanName")
+         - It provides ```initMethod``` and ```distroyMethod``` attributes to perform certain actions before bean initialization or bean bean destruction by a container. eg. ```@Bean(initMethod="init", destroyMethod="destroy")```
+         - It is a java based configuration(it need ```New``` keyword).
