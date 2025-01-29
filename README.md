@@ -194,3 +194,26 @@
          - By default bean is same as method name . we can specify bean name using @Bean(name="beanName")
          - It provides ```initMethod``` and ```distroyMethod``` attributes to perform certain actions before bean initialization or bean bean destruction by a container. eg. ```@Bean(initMethod="init", destroyMethod="destroy")```
          - It is a java based configuration(it need ```New``` keyword).
+        
+       - **Stereotype annotations**
+         - These annotations are used to create spring beans automatically in the application context(Spring IoC container)
+         - The main sterotype annotation is ```@Component```
+         - By using this annotation, Spring provides more stereotype meta annotations such as @Service, @Repository, @Controller
+         - @Service annotation is used to create spring beans at the service layer.
+         - @Repository is used to create spring beans for the repositories at the DAO layer.
+         - @Controller is used to create Spring beans at the controller layed.
+       - **```@Lazy```**
+         - By default, Spring creates all singleton beans eagerly at the startup of application context.
+         - We can load the spring beans lazily(on-demand) using @Lazy annotation.
+         - @Lazy annotation can be used with @Configuration, @Component and @Bean annotations.
+         - Eager Initialization is recommended to avoid and detect all possible errors immediately at the time of starting the server rather then runtime.
+       - **```@Scope```**
+         - Spring framwork defines 6 types of scopes such as
+           - singleton: Only one instance of bean is created and shared across the entire application. This is default scope. Eg ```@Scope(value=ConfigurableBeanfactory.SCOPE_SINGLETON)``` 
+           - prototype: A new instance of the bean is created every time it is requested. eg. ```@Scope(value=ConfigurableBeanfactory.SCOPE_PROTOTYPE)```
+           - request
+           - session
+           - application
+           - websocket
+         - It is used to define a scope of the bean.
+         - We use @Scope to define the scope of a @Component class or a @Bean definition.
