@@ -217,3 +217,78 @@
            - websocket
          - It is used to define a scope of the bean.
          - We use @Scope to define the scope of a @Component class or a @Bean definition.
+ 15. **Flow Of Spring Boot**
+     - **Application Initialization:**
+       - When we run a Spring Boot application, it starts by initializing the Spring Application Context. This is the core container that manages the lifecycle of beans and their dependencies.
+     - **Auto-Configuration:**
+       - Spring Boot uses auto-configuration to automatically configure application based on the dependencies we have added. For example, if we include ```spring-boot-starter-web```, Spring Boot will automatically configure an embedded Tomcat server and set up Spring MVC.
+     - **Component Scanning:**
+       - Spring Boot scans application for components (like ```@Component```, ```@Service```, ```@Repository```, ```@Controller```, etc.) and registers them as beans in the Spring Application Context.
+     - **Dependency Injection:**
+       - Once the beans are registered, Spring Boot injects the dependencies into the beans using the Inversion of Control (IoC) principle.
+     - **Application Execution:**
+       - After the context is initialized and all beans are wired together, the application is ready to handle requests (in the case of a web application) or execute the business logic.
+     - **Shutdown:**
+       - When the application is shut down, the Spring Application Context is closed, and all beans are destroyed in an orderly manner.
+ 16. **Inversion of Control (IoC)**
+     - Inversion of Control (IoC) is a design principle in which the control of object creation, configuration, and lifecycle is transferred from the application code to a framework or container. In the context of Spring, the IoC container is responsible for managing the lifecycle of objects (beans) and their dependencies.
+     - In traditional programming, the flow of control is determined by the application code. For example, if a class A needs an instance of class B, the developer explicitly creates an instance of B and passes it to A. This approach tightly couples the classes and makes the code harder to maintain and test.
+     - **How IoC Manages Everything**
+       - **Bean Definition:**
+         - Beans are defined using annotations like @Component, @Service, @Repository, @Controller, or XML configuration. These definitions tell the IoC container what beans to manage.
+       - **Bean Instantiation:**
+         - The IoC container creates instances of the beans based on their definitions. This is done either at application startup or when the bean is first requested (lazy initialization).
+       - **Dependency Injection:**
+         - The IoC container injects the dependencies into the beans. This can be done via constructor injection, setter injection, or field injection.
+       - **Lifecycle Management:**
+         - The IoC container manages the lifecycle of beans, including initialization (via ```@PostConstruct``` or ```InitializingBean```) and destruction (via ```@PreDestroy``` or ```DisposableBean```).
+       - **Configuration Management:**
+         - The IoC container reads configuration properties (from ```application.properties``` or ```application.yml```) and injects them into beans using ```@Value``` or ```@ConfigurationProperties```.
+      
+ 17. **Tight Coupling & Loose Coupling**
+     - **Tight Coupling:**
+       - Tight coupling occurs when two or more components are highly dependent on each other. Changes in one component often require changes in the other, making the system rigid and harder to maintain.
+       - For example, if ClassA directly creates an instance of ClassB, it is tightly coupled to ClassB.
+       - ```
+         class Engine {
+             public void start() {
+                 System.out.println("Engine started.");
+             }
+         }
+         class Car {
+             private Engine engine;
+             public Car() {
+                 this.engine = new Engine(); // Tight coupling: Car directly creates an instance of Engine
+             }
+             public void start() {
+                 engine.start();
+             }
+         }
+         ```
+     - **Loose Coupling:**
+       - Loose coupling occurs when components are independent of each other and interact through well-defined interfaces or abstractions. Changes in one component have minimal or no impact on other components.
+       - ```
+         interface Engine {
+             void start();
+         }
+
+         class PetrolEngine implements Engine {
+             @Override
+             public void start() {
+                 System.out.println("Petrol Engine started.");
+             }
+         }
+         class Car {
+             private Engine engine;
+             public Car(Engine engine) { // Loose coupling: Car depends on the Engine interface
+                 this.engine = engine;
+             }
+             public void start() {
+                 engine.start();
+             }
+         }
+         ```
+       - **How to Achieve Loose Coupling**
+         - Use Interfaces or Abstract Classes: Depend on abstractions rather than concrete implementations.
+         - Apply Dependency Injection (DI): Let a framework (like Spring) inject dependencies rather than creating them directly. For example using ```@Autowired``` annotation
+      
