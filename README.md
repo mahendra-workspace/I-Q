@@ -292,3 +292,16 @@
          - Use Interfaces or Abstract Classes: Depend on abstractions rather than concrete implementations.
          - Apply Dependency Injection (DI): Let a framework (like Spring) inject dependencies rather than creating them directly. For example using ```@Autowired``` annotation
       
+ 18. **What is Logging?**
+     - Logging is the process of recording events, messages, and errors that occur during the execution of an application.
+     - These logs help developers and system administrators monitor the application, debug issues, and analyze performance.
+     - Spring Boot uses ```SLF4J (Simple Logging Facade for Java)``` as the logging abstraction and Logback as the default logging implementation.
+     - You can configure logging in the ```application.properties``` or ```application.yml``` file.
+    
+ 19. **What is Swagger?**
+     - Swagger is a tool for designing, building, and documenting RESTful APIs.
+     - Swagger automatically generates and maintains up-to-date API documentation, reducing the need for manual documentation.
+     - Allows developers to test API endpoints directly from the documentation.
+     - Swagger UI allows developers to test APIs without using external tools like Postman.
+     - To use Swagger in Spring Boot, you need to add the Springfox or Springdoc OpenAPI dependency. Springdoc OpenAPI is the newer and more actively maintained library.
+     - 
