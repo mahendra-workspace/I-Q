@@ -299,9 +299,10 @@
      - You can configure logging in the ```application.properties``` or ```application.yml``` file.
     
  19. **What is Swagger?**
+     - OpenAPI defines a standardized format for describing APIs and swagger is a tool use to implement openAPI specification.
      - Swagger is a tool for designing, building, and documenting RESTful APIs.
      - Swagger automatically generates and maintains up-to-date API documentation, reducing the need for manual documentation.
      - Allows developers to test API endpoints directly from the documentation.
      - Swagger UI allows developers to test APIs without using external tools like Postman.
      - To use Swagger in Spring Boot, you need to add the Springfox or Springdoc OpenAPI dependency. Springdoc OpenAPI is the newer and more actively maintained library.
-     - 
+     - ```springfox-boot-starter``` or ```springDoc openAPI``` It is a java library use to implement swagger and generating documentation automatically.
